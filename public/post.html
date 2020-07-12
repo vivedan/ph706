@@ -1,0 +1,201 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>PH706 - The story</title>
+    <meta name="description" content="PH706 - An immersive neo-party" />
+
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="https://cdn.glitch.com/60e19993-0614-48b3-9be5-69649f6f5b68%2Ffic.png?v=1593614453706"
+    />
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <video
+      id="myVideo"
+      src="https://cdn.glitch.com/3caaeeee-606a-4efa-b25c-25fd7df67760%2FPOST-PARTY%20with%20music%20final.mp4?v=1594550211526"
+    ></video>
+
+    <div
+      id="enterVideo"
+      style="position: relative; z-index: 0; width: 100vw; height: 100vh; background: black"
+    >
+      <div id="gradient1"></div>
+      <div
+        id="enterPart"
+        style="position: relative; z-index: 1000; top: 50vh; display: flex; justify-content: center; align-items: center; flex-direction: column"
+      >
+        <img
+          id="logoEnterFirst"
+          src="https://cdn.glitch.com/0e65d536-0425-4e6e-8059-1247674b938e%2Fneon%20logo2.png?v=1592505914123"
+          crossorigin="anonymous"
+        />
+
+        <div id="arrowContainer">
+          <img
+            id="longArrow"
+            src="https://cdn.glitch.com/3caaeeee-606a-4efa-b25c-25fd7df67760%2F6.%20long%20button.png?v=1594381525854"
+            crossorigin="anonymous"
+          />
+
+          <img
+            class="shortArrow"
+            src="https://cdn.glitch.com/3caaeeee-606a-4efa-b25c-25fd7df67760%2F7.arrow.png?v=1594381526188"
+            crossorigin="anonymous"
+          />
+          <img
+            class="shortArrow"
+            src="https://cdn.glitch.com/3caaeeee-606a-4efa-b25c-25fd7df67760%2F7.arrow.png?v=1594381526188"
+            crossorigin="anonymous"
+          />
+          <img
+            class="shortArrow"
+            src="https://cdn.glitch.com/3caaeeee-606a-4efa-b25c-25fd7df67760%2F7.arrow.png?v=1594381526188"
+            crossorigin="anonymous"
+          />
+
+          <!--<p style="color: white; width: 30vw; ">
+        Bullshit, bullshit, bullshit, hahahaha this is so great so amazing
+        Bullshit, bullshit, bullshit, hahahaha this is so great so amazing
+        Bullshit, bullshit, bullshit, hahahaha this is so great so amazing
+        Bullshit, bullshit, bullshit, hahahaha this is so great so amazing
+        Bullshit, bullshit, bullshit, hahahaha this is so great so amazing
+      </p>-->
+          <button id="videoButton" onclick="enterVideo()">
+            play
+          </button>
+
+          <div>
+            <p style="color: black; font-size: 0.7rem; display: inline">
+              An immersive experience created by
+            </p>
+            <p style="color: black; font-size: 1rem; display: inline">
+              Ziwei Zhao / Xiaoxuan Li / Shiyou Peng / Santra Navas / Daniel
+              Vera
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button
+      id="enterParty"
+      onclick="enterParty()"
+      style="position: relative; z-index: 1000; display: none; margin: auto; top: 50vh;"
+    >
+      REUNION
+    </button>
+
+    <script>
+      function enterVideo() {
+        let enterMenu = document.getElementById("enterVideo");
+        enterMenu.style.display = "none";
+
+        var isMobile = {
+          Android: function() {
+            return navigator.userAgent.match(/Android/i);
+          },
+          BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+          },
+          iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+          },
+          Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+          },
+          Windows: function() {
+            return (
+              navigator.userAgent.match(/IEMobile/i) ||
+              navigator.userAgent.match(/WPDesktop/i)
+            );
+          },
+          any: function() {
+            return (
+              isMobile.Android() ||
+              isMobile.BlackBerry() ||
+              isMobile.iOS() ||
+              isMobile.Opera() ||
+              isMobile.Windows()
+            );
+          }
+        };
+        if (isMobile.iOS()) {
+          playVideo();
+        } else {
+          toggleFullScreen();
+          playVideo();
+        }
+
+        function playVideo() {
+          document.getElementById("myVideo").play();
+        }
+      }
+    </script>
+
+    <script>
+      function toggleFullScreen() {
+        var doc = window.document;
+        var docEl = doc.documentElement;
+
+        var requestFullScreen =
+          docEl.requestFullscreen ||
+          docEl.mozRequestFullScreen ||
+          docEl.webkitRequestFullScreen ||
+          docEl.msRequestFullscreen;
+        var cancelFullScreen =
+          doc.exitFullscreen ||
+          doc.mozCancelFullScreen ||
+          doc.webkitExitFullscreen ||
+          doc.msExitFullscreen;
+
+        if (
+          !doc.fullscreenElement &&
+          !doc.mozFullScreenElement &&
+          !doc.webkitFullscreenElement &&
+          !doc.msFullscreenElement
+        ) {
+          requestFullScreen.call(docEl);
+        } else {
+          cancelFullScreen.call(doc);
+        }
+      }
+    </script>
+
+    <script>
+      document
+        .getElementById("myVideo")
+        .addEventListener("ended", myHandler, false);
+      function myHandler(e) {
+        // What you want to do after the event
+        window.open("/postscene.html", "_self");
+      }
+    </script>
+
+    <!--<script>
+      function enterPostParty() {
+        window.open("/postscene.html");
+        window.open("https://www.instagram.com/ph7.0.6/", "_self");
+      }
+    </script>-->
+  </body>
+</html>
